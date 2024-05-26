@@ -1,0 +1,26 @@
+<div>
+  <%= link_to '新規作成', new_todo_path %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>作成日</th>
+      <th>更新日</th>
+      <th></th>
+      <th></th>
+  </thead>
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= link_to todo.title, todo_path(todo.id) %></td>
+        <td><%= todo.created_at %></td>
+        <td><%= todo.updated_at %></td>
+        <td><%= link_to '編集', edit_todo_path(todo.id) %></td>
+        <td><%= button_to '削除', todo_path(todo.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
