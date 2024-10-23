@@ -19,25 +19,24 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.create!(todo_params)
-    redirect_to todos_path
+    redirect_to todo_path(@todo.id)
   end
 
   def update
     @todo = Todo.find(params[:id])
     @todo.update!(todo_params)
-    redirect_to todos_path
+    redirect_to todo_path(@todo.id)
   end
 
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy!
     redirect_to todos_path
-
   end
 
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :description)
+    params.require(:todo).permit(:title, :description, :image, :remove_image)
   end
 end

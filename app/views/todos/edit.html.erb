@@ -1,7 +1,19 @@
 <%= form_with model: @todo do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+    <% if @todo.image? %>
+      <%= image_tag(@todo.image.thumb.url) %>
+      <%= f.label :remove_image %>
+      <%= f.check_box :remove_image %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

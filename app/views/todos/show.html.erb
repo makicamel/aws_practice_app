@@ -12,6 +12,17 @@
     <td><%= @todo.description %></td>
   </tr>
   <tr>
+  <tr>
+    <th>画像</th>
+    <td>
+      <% if @todo.image? %>
+        <%= link_to(image_tag(@todo.image.thumb.url), @todo.image.url) %>
+      <% else %>
+        <%= image_tag(@todo.image.thumb.url) %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <th>作成日</th>
     <td><%= @todo.created_at %></td>
   </tr>
