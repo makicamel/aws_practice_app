@@ -6,8 +6,8 @@ default: &default
 development:
   <<: *default
   database: aws-practice-app_development
-  username: rails
-  password: password
+  username: <%= ENV.fetch("DB_USER_NAME", "rails") %>
+  password: <%= ENV.fetch("DB_USER_PASSWORD", nil) %>
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -16,8 +16,8 @@ development:
 test:
   <<: *default
   database: aws-practice-app_test
-  username: rails
-  password: password
+  username: <%= ENV.fetch("DB_USER_NAME", "rails") %>
+  password: <%= ENV.fetch("DB_USER_PASSWORD", nil) %>
 
 production:
   <<: *default
